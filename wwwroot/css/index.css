@@ -56,7 +56,24 @@ input:focus{
     margin-bottom: 1rem;
 }
 
-/*MODAL*/
+
+.color-white{
+    color: #fff;
+}
+
+.color-grey{
+    color: rgb(175, 175, 175);
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.margin-left{
+    margin-left: 5px;
+}
+
+/*MODAL CREAR PERSONA Y TELEFONO*/
 .modal-container, .modal-telefonos-container{
     display: none;
     position: fixed;
@@ -205,20 +222,4 @@ input:focus{
 .fa-search{
     padding: .28rem;
     color: rgb(83,107,246);
-}
-
-.color-white{
-    color: #fff;
-}
-
-.color-grey{
-    color: rgb(175, 175, 175);
-}
-
-.pointer{
-    cursor: pointer;
-}
-
-.margin-left{
-    margin-left: 5px;
 }

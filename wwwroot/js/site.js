@@ -1,8 +1,10 @@
 ﻿$(document).ready(function(){
+    /* ELEMENTOS QUE POR DEFAULT VAN OCULTOS */
     $('.fa-save').hide();
     $('.check-tel').hide();
     $('.cross-tel').hide();
 
+    /* EDITAR DATOS DE PERSONA SELECCIONADA */
     $('.fa-pen').on('click', function(){
         var id = $(this).closest('div[class^=persona-body]').find('.id-persona').val();
         $('.save-'+id).show();
@@ -12,6 +14,7 @@
         $('.credito-'+id).removeAttr('disabled');
     });
 
+    /* GUARDAR DATOS EDITADOS DE PERSONA SELECCIONADA */
     $('.fa-save').on('click', function(){
         var id = $(this).closest('div[class^=persona-body]').find('.id-persona').val();
         var nuevo_nombre = $('.nombre-'+id).val();
@@ -41,6 +44,7 @@
         }
     });
 
+    /* BORRAR PERSONA SELECCIONADA */
     $('.borrar-persona').on('click', function(){
         var id = $(this).closest('div[class^=persona-body]').find('.id-persona').val();
         $('.body-'+id).hide(1000);
@@ -54,6 +58,7 @@
         });
     });
 
+    /* REALIZAR BÚSQUEDA DE PERSONA POR NOMBRE */
     $('.fa-search').on('click', function(){
         var nombre_persona = $('.buscar-personas').val();
 
@@ -100,12 +105,14 @@
         $('.buscar-personas').val("");
     });
 
+    /* AGREGAR NUEVO TELÉFONO */
     $('.save-telefono').on('click', function(){
         $('.nuevo-telefono').attr('type', 'text');
         $('.check-tel').show();
         $('.cross-tel').show();
     });
 
+    /* AGREGAR NUEVO TELÉFONO A LA BASE DE DATOS */
     $('.check-tel').on('click', function(){
         var telefono = $('.nuevo-telefono').val();
         var id = $(this).closest('div[class^=telefonos-input-container]').find('.id-persona-telefono').val();
@@ -124,14 +131,55 @@
         $('.cross-tel').hide();
     });
 
+    /* EDITAR TELÉFONO SELECCIONADO*/
+    $('body').on('click', '.fa-pen', function(){
+        var id_telefono = $(this).next('.phone-id').val();
+        $('.telefono-'+id_telefono).removeAttr('disabled');
+        $('.act-'+id_telefono).show();
+    });
+
+    /* ACTUALIZAR TELÉFONO SELECCIONADO */
+    $('body').on('click', '.fa-redo-alt', function(){
+        var id_telefono = $(this).next('.phone-id').val();
+        var nuevo_valor = $('.telefono-'+id_telefono).val();
+       
+        $.ajax({
+            url: '/Home/Actualizar_Numero',
+            type: 'POST',
+            data: {
+                numero: nuevo_valor,
+                ID: id_telefono
+            }
+        });
+        $('.telefono-'+id_telefono).attr('disabled', 'disabled');
+        $(this).hide('.fa-redo-alt');
+    });
+
+    /* BORRAR TELÉFONO SELECCIONADO */
+    $('body').on('click', '.borrar-telefono', function(){
+        var id_telefono = $(this).next('.phone-id').val();
+        $('.content-telefono-'+id_telefono).hide(1000);
+        
+        $.ajax({
+            url: '/Home/Borrar_Telefono',
+            type: 'POST',
+            data: {
+                ID: id_telefono
+            }
+        });
+    });
+
+    /*MOSTRAR MODAL AGREGAR-PERSONA*/
     $('#agregar-persona').on('click', function(){
         $('#modal-container-close').css('display', 'flex');
     });
 
+    /*OCULTAR MODAL AGREGAR-PERSONA*/
     $('.close-modal-container').on('click', function(){
         $('#modal-container-close').css('display', 'none');
     });
 
+    /*MOSTRAR MODAL AGREGAR-TELEFONO + CONSULTA AJAX*/
     $('.telefonos').on('click', function(){
         $('#modal-telefonos').css('display', 'flex');
         var id = $(this).closest('div[class^=persona-body]').find('.id-persona').val();
@@ -162,46 +210,13 @@
         });
     });
 
-    $('body').on('click', '.fa-pen', function(){
-        var id_telefono = $(this).next('.phone-id').val();
-        $('.telefono-'+id_telefono).removeAttr('disabled');
-        $('.act-'+id_telefono).show();
-    });
-
-    $('body').on('click', '.fa-redo-alt', function(){
-        var id_telefono = $(this).next('.phone-id').val();
-        var nuevo_valor = $('.telefono-'+id_telefono).val();
-       
-        $.ajax({
-            url: '/Home/Actualizar_Numero',
-            type: 'POST',
-            data: {
-                numero: nuevo_valor,
-                ID: id_telefono
-            }
-        });
-        $('.telefono-'+id_telefono).attr('disabled', 'disabled');
-        $(this).hide('.fa-redo-alt');
-    });
-
-    $('body').on('click', '.borrar-telefono', function(){
-        var id_telefono = $(this).next('.phone-id').val();
-        $('.content-telefono-'+id_telefono).hide(1000);
-        
-        $.ajax({
-            url: '/Home/Borrar_Telefono',
-            type: 'POST',
-            data: {
-                ID: id_telefono
-            }
-        });
-    });
-
+    /*OCULTAR MODAL AGREGAR-TELEFONO*/
     $('.close-modal-telefonos-container').on('click', function(){
         $('#modal-telefonos').css('display', 'none');
     });
 });
 
+/*MÉTODO PARA CORROBORAR SÓLO USO DE NÚMEROS Y , */
 function validaNumericosPrecio(event) {
     if(event.charCode >= 48 && event.charCode <= 57 || event.charCode == 44){
         return true;
@@ -209,6 +224,7 @@ function validaNumericosPrecio(event) {
         return false;        
 }
 
+/*MÉTODO PARA CORROBORAR SÓLO USO DE NÚMEROS*/
 function validaNumericos(event) {
     if(event.charCode >= 48 && event.charCode <= 57){
         return true;
