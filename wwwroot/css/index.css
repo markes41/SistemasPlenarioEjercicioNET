@@ -1,0 +1,224 @@
+p{
+    margin: 0;
+}
+
+body{
+    background: rgb(83, 107, 246)
+}
+
+.persona-body{
+    border: 2px solid rgba(221, 221, 221, .2);
+    padding: .5rem;
+    margin: 1rem auto;
+    width: 23rem;
+}
+
+.persona-body p{
+    color: #fff;
+}
+
+.options{
+    margin: .5rem 0;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+input{
+    border: 1px solid #000;
+    height: 24.8px;
+}
+
+input:disabled{
+    background-color: #fff;
+    border: none;
+    color: #000;
+}
+
+input:focus{
+    outline: none;
+}
+
+.nombre{
+    display: flex;
+    align-items: center;
+}
+
+/*ESTILOS REPETIDOS*/
+.display-flex{
+    display: flex;
+}
+
+.margin-right{
+    margin-right: .5rem;
+}
+
+.margin-bottom{
+    margin-bottom: 1rem;
+}
+
+/*MODAL*/
+.modal-container, .modal-telefonos-container{
+    display: none;
+    position: fixed;
+    padding-top: 3.4%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content, .modal-telefonos-content {
+    background-color: rgb(224 224 224);
+    width: 400px;
+    height: 250px;
+    position: absolute;
+    left: 42%;
+    top: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+    border-radius: 8px;
+}
+
+.modal-telefonos-content{
+    overflow-y: initial !important
+}
+
+.input-container, .telefonos-input-container{
+    margin: 2rem 1rem 1rem 1rem;
+    border-radius: 5px;
+    padding: .5rem 0;
+}
+
+.telefono-section{
+    height: 150px;
+    overflow-y: auto;
+}
+
+.input-modal{
+    background-color: rgb(255, 255, 255);
+    outline: none;
+    text-decoration: none;
+    border: none;
+    color: #000;
+    font-size: 18px;
+    width: 97%;
+    margin: 10px 0;
+}
+
+.save-url{
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(107, 70, 193);
+    padding: .8rem 10rem;
+    border-radius: 5px;
+    margin: 0 auto;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+    border: none;
+    height: 3rem;
+}
+
+.save-telefono{
+    color: #fff;
+    background-color: rgb(107, 70, 193);
+    padding: .8rem 7.6rem;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    height: 3rem;
+    position: absolute;
+    bottom: 5px;
+}
+
+.telefono-input{
+    width: 17rem;
+}
+
+.telefono-input:disabled{
+    background-color: rgb(224,224,224);
+}
+
+.close-modal-container, .close-modal-telefonos-container{
+    position: relative;
+    top: 12px;
+    left: 27px;
+}
+
+.close-modal-container:hover, .close-modal-telefonos-container:hover{
+    cursor: pointer;
+}
+
+.close-modal-container:before, .close-modal-container:after,
+    .close-modal-telefonos-container:before, .close-modal-telefonos-container:after{
+    position: absolute;
+    content: ' ';
+    height: 19px;
+    width: 2px;
+    background-color: #000000;
+}
+
+.close-modal-container:before, .close-modal-telefonos-container:before{
+    transform: rotate(45deg);
+}
+
+.close-modal-container:after, .close-modal-telefonos-container:after{
+    transform: rotate(-45deg);
+}
+
+.nacimiento{
+    width: 100%;
+}
+
+.day, .year, .month{
+    border: 1px solid gainsboro;
+    width: 7.2rem;
+}
+
+.nueva-persona{
+    background-color: rgb(107, 70, 193);
+    width: 10rem;
+    text-align: center;
+    padding: .7rem;
+    border-radius: 7px;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.buscar{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    padding: .4rem;
+    margin: 1rem 0;
+}
+
+.buscar-personas{
+    border: none;
+    width: 90%;
+}
+
+.fa-search{
+    padding: .28rem;
+    color: rgb(83,107,246);
+}
+
+.color-white{
+    color: #fff;
+}
+
+.color-grey{
+    color: rgb(175, 175, 175);
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.margin-left{
+    margin-left: 5px;
+}
